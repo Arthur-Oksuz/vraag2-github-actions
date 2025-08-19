@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+    - main
+    - release/*
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v4
+     - name: Setup Node
+       uses: actions/setup-node@v4
+       with:
+         should_push : false
+         output_file : "helloworld.js"
+     - uses: actions/upload-artifact@v4.6.2
+       with:
+          path: "helloworld.js" 
+      
